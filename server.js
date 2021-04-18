@@ -30,6 +30,18 @@ app.get('/convos', async(req,res)=>{
 		console.error(err.message);
 	}
 });
+app.post('/addConvo', async(req,res)=>{
+	try{
+		const {title} =req.body;		
+		const {startDate} = Date.now();
+		const values = [title,startDate];
+		const newConvo= await pool.query("INSERT INTO convo (title, startDate) VALUES ($1,$2)", [values]);
+		res.json(newConvo);
+	} catch(err){
+		console.error(err.message);
+	}
+})
+
 app.get('/convos/:convoId', async(req,res)=>{
 	try{
 		const {convoId} = req.params;
@@ -60,6 +72,7 @@ app.get('/convos/:convoId/messages/:msgId', async(req,res)=>{
 		console.error(err.message);
 	}
 });
+
 
 
 app.get('/test', function(req, res) {

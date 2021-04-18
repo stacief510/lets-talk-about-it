@@ -3,4 +3,10 @@
 }
 .page-title{
 	text-align: center;
+	margin-top:2rem;
+}.addAconvo{
+	margin-left:10px;
+}
+.convoForm{
+	display:flex;
 }
