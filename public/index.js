@@ -55,7 +55,7 @@ function renderConvos(convo){
 	$('#allTheConvos').append(`
 		<div class="row convoRow" data-value=${convo.convoid}>
 			<div class="col-lg-6 cTitleColumn">
-				<span class='convo-title'><button onClick="showMessages(${convo.convoid})" id=${convo.convoid}>${convo.title}</button></span>
+				<span class='convo-title'><a href='/convos/${convo.convoid}/messages'>${convo.title}</a></span>
 			</div>
 			<div class="col-lg-6 dateColumn">
 				<span class='convo-createdDate'>${convo.startdate.substring(0,10)}</span>
@@ -118,7 +118,7 @@ function renderConvos(convo){
 $('#allTheConvos').append(`
 	<div class="row convoRow" data-value=${convo.convoid}>
 		<div class="col-lg-6 cTitleColumn">
-			<span class='convo-title'><button onClick="showMessages(${convo.convoid})" id=${convo.convoid}>${convo.title}</button></span>
+			<span class='convo-title'><a href='/convos/${convo.convoid}/messages'>${convo.title}</a></span>
 		</div>
 		<div class="col-lg-6 dateColumn">
 			<span class='convo-createdDate'>${convo.startdate.substring(0,10)}</span>
