@@ -18,6 +18,7 @@
   "homepage": "https://github.com/stacief510/lets-talk-about-it#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "npm": "^7.10.0",
     "pg": "^8.6.0",
     "postgres": "^1.0.2"

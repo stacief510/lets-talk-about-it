@@ -12,56 +12,62 @@ function handleSuccess(convo){
       convo.forEach(function(convo){
         renderConvos(convo);
       });
+	  
 }
 
-
+//onBtnClick call this & pass data-value to convoid
+function showMessages(cid){
+	console.log(cid);
 $.ajax({
-	method:'GET',
-	url:'/convos/:convoId/messages/',
-	success: handleMsgSuccess,
-	error: handleError
-});
-
-function handleMsgSuccess(msg){
-      allMsgs.forEach(function(msg){
-        renderMessages(allMsgs);
-      });
-}
-
-$('#convoForm').on('submit', function(event){
-	event.preventDefault();
-	var formData = $(this).serialize();
-	console.log(formData);
-	this.reset();
-	
-	$.ajax({
-		method:'POST',
-		url: "/addConvo",
-		data: formData,
-		success: postSuccess,
+		method:'GET',
+		url:'/convos/'+cid+'/messages/',
+		success: handleMsgSuccess,
 		error: handleError
-	});
 });
 
- function handleError (err){
-    console.log('There is an error', + err); 
-  }
+	function handleMsgSuccess(msg){
+		msg.forEach(function(msg){
+			renderMessages(msg);
+		});
+	}
+}
+// $.ajax({
+// 		method:'GET',
+// 		url:'/convos/:convoId/messages/:messageId/thoughts',
+// 		success: handleThoughtSuccess,
+// 		error: handleError
+// });
 
-function renderConvos(convo){
+// 	function handleMsgSuccess(msg){
+// 		allMsgs.forEach(function(msg){
+// 			renderMessages(allMsgs);
+// 		});
+// 	}
+
+// 	function handleThoughtSuccess(thoughts){
+
+// 	}
+
+
+
+
+function renderConvos(convo){	
 	$('#allTheConvos').append(`
-		<div class="row">
-			<div class="col-lg-8">
-				<span class='convo-title'><a href='/convos/${convo.convoid}/messages'>${convo.title}</a></span>
+		<div class="row convoRow" data-value=${convo.convoid}>
+			<div class="col-lg-6 cTitleColumn">
+				<span class='convo-title'><button onClick="showMessages(${convo.convoid})" id=${convo.convoid}>${convo.title}</button></span>
 			</div>
-			<div class="col-lg-4">
-				<span class='convo-createdDate'>${convo.startdate}</span>
+			<div class="col-lg-6 dateColumn">
+				<span class='convo-createdDate'>${convo.startdate.substring(0,10)}</span>
 			</div>
 		</div>
 
 		`)
 
 };
+
 function renderMessages(msg){
+	console.log('in')
 	$('#allTheMessages').append(`
 		<h3>${msg.convo}</h3>
 		<div class="row">
@@ -77,5 +83,48 @@ function renderMessages(msg){
 
 };
 
+function handleError (err){
+    console.log('There is an error', + err); 
+  }
 //end
 });
+
+
+$('#convoForm').on('submit', function(event){
+	event.preventDefault();
+	var formData = $(this).serialize();
+	console.log(formData);
+	this.reset();
+	
+	$.ajax({
+		method:'POST',
+		url: "/addConvo",
+		data: formData,
+		success: handleSuccess,
+		error: handleError
+	});
+
+});
+function handleSuccess(convo){
+	convo.forEach(function(convo){
+	  renderConvos(convo);
+	});
+}
+function handleError (err){
+	console.log('There is an error', + err); 
+  }
+
+function renderConvos(convo){	
+$('#allTheConvos').append(`
+	<div class="row convoRow" data-value=${convo.convoid}>
+		<div class="col-lg-6 cTitleColumn">
+			<span class='convo-title'><button onClick="showMessages(${convo.convoid})" id=${convo.convoid}>${convo.title}</button></span>
+		</div>
+		<div class="col-lg-6 dateColumn">
+			<span class='convo-createdDate'>${convo.startdate.substring(0,10)}</span>
+		</div>
+	</div>
+
+	`)
+	
+};

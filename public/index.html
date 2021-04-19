@@ -15,9 +15,8 @@
   <body>
 	<div class="container page-title">
 		<h3>Welcome! Let's Talk About It</h3>
-    <form class="convoForm">
-      <input type="text" class="form-control"/>
-      <!-- <button class="btn btn-primary addAconvo">Add A Conversation Topic</button> -->
+    <form id="convoForm">
+      <input id="title" name="title" type="text"  class="form-control input-md">
       <button id="submitButton" name="submitButton" class="btn btn-primary addAconvo">Add A Conversation Topic</button>
     </form>
     <br/>
@@ -27,14 +26,11 @@
           <th>Conversation Title</th>
           <th>Converstaion Creation Date</th>
         </thead>
-        <tbody>
-          <tr>
-          </tr>
-        </tbody>
       </table>
       <div id="allTheConvos">
       </div>
-    
+      <div id="allTheMessages">
+      </div>
 	</div>
   	
   </body>

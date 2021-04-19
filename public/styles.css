@@ -7,6 +7,17 @@
 }.addAconvo{
 	margin-left:10px;
 }
-.convoForm{
+#convoForm{
 	display:flex;
+}
+#allTheConvos button{
+	border: none;
+    background: none;
+    text-decoration: underline;
+    color: blue;
+}
+.dateColumn{
+	padding-right: 7rem;
+}.cTitleColumn{
+	padding-right:6rem;
 }

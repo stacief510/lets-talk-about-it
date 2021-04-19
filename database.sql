@@ -30,4 +30,10 @@ VALUES ('WandaVision', '2021-04-16');
 
 
 INSERT INTO messages(msgText,msgCreatedDate,msgCreatedTime,convo)
-VALUES ('Lets take a poll...Comment below if you are a cat person or a dog person.', '2021-04-15','9:07',2);
+VALUES ('If you are in this conversation, I hope you have watched all of WandaVision. Lets talk about it.', '2021-03-22','10:27',3);
+
+INSERT INTO thoughts(thoughtText,thoughtCreatedDate,thoughtCreatedTime,message)
+VALUES ('Kathryn Hahn is so great in this show!', '2021-04-01','1:02',5);
+
+DELETE FROM convos
+WHERE startDate = null;
